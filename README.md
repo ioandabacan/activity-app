@@ -48,7 +48,7 @@ Câmpuri: title (text), description (richText), image (relație cu Media), siteL
 
 **Meetings**
 
-Câmpuri: title (text, required), date (date, required), type (select: 'workshop', 'anti-workshop'), workshopTopic (select: 'Demo your stack', 'F*ck-up nights', 'Meet the business' - condițional), presenter (relație 1-la-1 cu Members - condițional), discussionAgenda (richText - condițional).
+Câmpuri: title (text, required), date (date, required), venue (text, required), type (select: 'workshop', 'anti-workshop'), workshopTopic (select: 'Demo your stack', 'F*ck-up nights', 'Meet the business' - condițional), presenter (relație 1-la-1 cu Members - condițional), discussionAgenda (richText - condițional).
 
 #### C. Modulul 2: Coder Dojo Alba Iulia
 
@@ -101,7 +101,9 @@ După ce ați definit toate colecțiile (local, în proiectul vostru), trebuie s
 
 Această comandă va crea un singur fișier în src/migrations/, cu un nume de forma 0001_initial.ts.
 
-Acest fișier, care conține funcțiile async function up() și async function down(), este singurul cod care trebuie inclus în PR.
+Acest fișier, care conține funcțiile async function up() și async function down(), este singurul cod care trebuie inclus în PR. 
+
+Pentru extra points se poate face și o migrare ce adaugă/modifică un câmp.
 
 **_Diagrama ERD (Entity-Relationship Diagram)_**
 
@@ -109,7 +111,7 @@ O singură diagramă (imagine PNG/SVG sau PDF) care ilustrează vizual colecții
 
 Fișierul (ex: ERD.pdf) trebuie plasat în directorul rădăcină (root) al repository-ului.
 
-**Notă**: _Deși pentru a crea migrația trebuie să scrieți fișierele de definiție a colecțiilor (src/collections/...), includerea acestor fișiere-sursă în PR este opțională. Singurul livrabil de cod evaluat va fi fișierul de migrație generat._
+**Notă**: _Deși pentru a crea migrația trebuie să scrieți fișierele de definiție a colecțiilor (src/collections/...), includerea acestor fișiere-sursă în PR este opțională. Singurul livrabil de cod evaluat va fi fișierul de migrație generat. Câmpurile sunt orientative și subiect al modificărilor ulterioare dacă acestea sunt necesare pentru funcționalitate._
 
 **Trimiterea Temei:**
 
