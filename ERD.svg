@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000">
+  <defs>
+    <style>
+      .entity { fill: #E1F5FE; stroke: #01579B; stroke-width: 2; }
+      .entity-title { font-weight: bold; font-size: 12px; fill: #01579B; }
+      .entity-field { font-size: 10px; fill: #333; }
+      .relationship-line { stroke: #FF6F00; stroke-width: 2; fill: none; }
+      .relationship-label { font-size: 9px; fill: #FF6F00; }
+    </style>
+  </defs>
+
+  <text x="700" y="25" text-anchor="middle" font-size="20" font-weight="bold" fill="#01579B">
+    Activity-App Database Structure (AI3 Association)
+  </text>
+
+  <!-- Core Users & Roles -->
+  <g>
+    <!-- Users -->
+    <rect class="entity" x="50" y="70" width="150" height="90" rx="5"/>
+    <text class="entity-title" x="60" y="90">Users</text>
+    <text class="entity-field" x="60" y="105">id (PK)</text>
+    <text class="entity-field" x="60" y="120">email (UK)</text>
+    <text class="entity-field" x="60" y="135">password</text>
+    <text class="entity-field" x="60" y="150">createdAt</text>
+
+    <!-- Roles -->
+    <rect class="entity" x="250" y="70" width="150" height="90" rx="5"/>
+    <text class="entity-title" x="260" y="90">Roles</text>
+    <text class="entity-field" x="260" y="105">id (PK)</text>
+    <text class="entity-field" x="260" y="120">name (UK)</text>
+    <text class="entity-field" x="260" y="135">createdAt</text>
+  </g>
+
+  <!-- Members & Related -->
+  <g>
+    <!-- Members -->
+    <rect class="entity" x="50" y="220" width="180" height="140" rx="5"/>
+    <text class="entity-title" x="60" y="240">Members</text>
+    <text class="entity-field" x="60" y="255">id (PK)</text>
+    <text class="entity-field" x="60" y="270">user_id (FK)</text>
+    <text class="entity-field" x="60" y="285">status: enum</text>
+    <text class="entity-field" x="60" y="300">role: enum</text>
+    <text class="entity-field" x="60" y="315">name, organization</text>
+    <text class="entity-field" x="60" y="330">profileImage_id (FK)</text>
+    <text class="entity-field" x="60" y="345">linkedinProfile</text>
+
+    <!-- Initiatives -->
+    <rect class="entity" x="280" y="220" width="180" height="130" rx="5"/>
+    <text class="entity-title" x="290" y="240">Initiatives</text>
+    <text class="entity-field" x="290" y="255">id (PK)</text>
+    <text class="entity-field" x="290" y="270">title</text>
+    <text class="entity-field" x="290" y="285">description</text>
+    <text class="entity-field" x="290" y="300">coverImage_id (FK)</text>
+    <text class="entity-field" x="290" y="315">externalLink</text>
+  </g>
+
+  <!-- Coder Dojo Section -->
+  <g>
+    <!-- Ninjas -->
+    <rect class="entity" x="50" y="430" width="180" height="150" rx="5"/>
+    <text class="entity-title" x="60" y="450">Ninjas</text>
+    <text class="entity-field" x="60" y="465">id (PK)</text>
+    <text class="entity-field" x="60" y="480">childName, age</text>
+    <text class="entity-field" x="60" y="495">additionalInfo</text>
+    <text class="entity-field" x="60" y="510">parentName</text>
+    <text class="entity-field" x="60" y="525">parentEmail</text>
+    <text class="entity-field" x="60" y="540">parentPhone</text>
+    <text class="entity-field" x="60" y="555">safetyConsent</text>
+    <text class="entity-field" x="60" y="570">mediaConsent</text>
+
+    <!-- Mentors -->
+    <rect class="entity" x="280" y="430" width="180" height="130" rx="5"/>
+    <text class="entity-title" x="290" y="450">Mentors</text>
+    <text class="entity-field" x="290" y="465">id (PK)</text>
+    <text class="entity-field" x="290" y="480">name</text>
+    <text class="entity-field" x="290" y="495">biography</text>
+    <text class="entity-field" x="290" y="510">profilePhoto_id (FK)</text>
+    <text class="entity-field" x="290" y="525">linkedUser_id (FK)</text>
+  </g>
+
+  <!-- Meetings Section -->
+  <g>
+    <!-- Meetings -->
+    <rect class="entity" x="520" y="220" width="180" height="140" rx="5"/>
+    <text class="entity-title" x="530" y="240">Meetings</text>
+    <text class="entity-field" x="530" y="255">id (PK)</text>
+    <text class="entity-field" x="530" y="270">title</text>
+    <text class="entity-field" x="530" y="285">meetingDate</text>
+    <text class="entity-field" x="530" y="300">meetingVenue</text>
+    <text class="entity-field" x="530" y="315">meetingType: enum</text>
+    <text class="entity-field" x="530" y="330">topicName: enum</text>
+    <text class="entity-field" x="530" y="345">facilitator_id (FK)</text>
+  </g>
+
+  <!-- Festival Core -->
+  <g>
+    <!-- FestivalEditions -->
+    <rect class="entity" x="750" y="70" width="180" height="120" rx="5"/>
+    <text class="entity-title" x="760" y="90">FestivalEditions</text>
+    <text class="entity-field" x="760" y="105">id (PK)</text>
+    <text class="entity-field" x="760" y="120">year (UK)</text>
+    <text class="entity-field" x="760" y="135">title</text>
+    <text class="entity-field" x="760" y="150">mainTheme</text>
+    <text class="entity-field" x="760" y="165">details</text>
+
+    <!-- FestivalSections -->
+    <rect class="entity" x="980" y="70" width="180" height="100" rx="5"/>
+    <text class="entity-title" x="990" y="90">FestivalSections</text>
+    <text class="entity-field" x="990" y="105">id (PK)</text>
+    <text class="entity-field" x="990" y="120">festivalEdition_id (FK)</text>
+    <text class="entity-field" x="990" y="135">sectionName</text>
+  </g>
+
+  <!-- Festival Locations & Guests -->
+  <g>
+    <!-- Locations -->
+    <rect class="entity" x="750" y="260" width="200" height="160" rx="5"/>
+    <text class="entity-title" x="760" y="280">Locations</text>
+    <text class="entity-field" x="760" y="295">id (PK)</text>
+    <text class="entity-field" x="760" y="310">festivalEdition_id (FK)</text>
+    <text class="entity-field" x="760" y="325">locationName, address</text>
+    <text class="entity-field" x="760" y="340">geoCoordinates</text>
+    <text class="entity-field" x="760" y="355">layoutMap_id (FK)</text>
+    <text class="entity-field" x="760" y="370">maxCapacity</text>
+    <text class="entity-field" x="760" y="385">responsiblePerson_id (FK)</text>
+
+    <!-- Guests -->
+    <rect class="entity" x="1000" y="260" width="180" height="150" rx="5"/>
+    <text class="entity-title" x="1010" y="280">Guests</text>
+    <text class="entity-field" x="1010" y="295">id (PK)</text>
+    <text class="entity-field" x="1010" y="310">festivalEdition_id (FK)</text>
+    <text class="entity-field" x="1010" y="325">name, affiliation</text>
+    <text class="entity-field" x="1010" y="340">roles: array</text>
+    <text class="entity-field" x="1010" y="355">background</text>
+    <text class="entity-field" x="1010" y="370">guestPhoto_id (FK)</text>
+    <text class="entity-field" x="1010" y="385">onlinePresence</text>
+  </g>
+
+  <!-- Festival Volunteers & Activities -->
+  <g>
+    <!-- Volunteers -->
+    <rect class="entity" x="750" y="500" width="200" height="160" rx="5"/>
+    <text class="entity-title" x="760" y="520">Volunteers</text>
+    <text class="entity-field" x="760" y="535">id (PK)</text>
+    <text class="entity-field" x="760" y="550">festivalEdition_id (FK)</text>
+    <text class="entity-field" x="760" y="565">name, company</text>
+    <text class="entity-field" x="760" y="580">avatar_id (FK)</text>
+    <text class="entity-field" x="760" y="595">dateOfBirth, contact</text>
+    <text class="entity-field" x="760" y="610">policyDocument_id (FK)</text>
+    <text class="entity-field" x="760" y="625">superviser_id (FK)</text>
+    <text class="entity-field" x="760" y="640">relatedUser_id (FK)</text>
+
+    <!-- Activities -->
+    <rect class="entity" x="1000" y="500" width="180" height="140" rx="5"/>
+    <text class="entity-title" x="1010" y="520">Activities</text>
+    <text class="entity-field" x="1010" y="535">id (PK)</text>
+    <text class="entity-field" x="1010" y="550">festivalEdition_id (FK)</text>
+    <text class="entity-field" x="1010" y="565">title, category</text>
+    <text class="entity-field" x="1010" y="580">details</text>
+    <text class="entity-field" x="1010" y="595">targetGroups: array</text>
+    <text class="entity-field" x="1010" y="610">partOfSection_id (FK)</text>
+  </g>
+
+  <!-- Schedule & Media -->
+  <g>
+    <!-- Schedule -->
+    <rect class="entity" x="1200" y="500" width="180" height="120" rx="5"/>
+    <text class="entity-title" x="1210" y="520">Schedule</text>
+    <text class="entity-field" x="1210" y="535">id (PK)</text>
+    <text class="entity-field" x="1210" y="550">festivalEdition_id (FK)</text>
+    <text class="entity-field" x="1210" y="565">beginTime, finishTime</text>
+    <text class="entity-field" x="1210" y="580">scheduledActivity_id (FK)</text>
+    <text class="entity-field" x="1210" y="595">venue_id (FK)</text>
+
+    <!-- Media -->
+    <rect class="entity" x="520" y="430" width="150" height="100" rx="5"/>
+    <text class="entity-title" x="530" y="450">Media</text>
+    <text class="entity-field" x="530" y="465">id (PK)</text>
+    <text class="entity-field" x="530" y="480">filename</text>
+    <text class="entity-field" x="530" y="495">mimeType</text>
+    <text class="entity-field" x="530" y="510">createdAt</text>
+  </g>
+
+  <!-- Posts -->
+  <g>
+    <rect class="entity" x="520" y="600" width="150" height="110" rx="5"/>
+    <text class="entity-title" x="530" y="620">Posts</text>
+    <text class="entity-field" x="530" y="635">id (PK)</text>
+    <text class="entity-field" x="530" y="650">title, slug (UK)</text>
+    <text class="entity-field" x="530" y="665">content</text>
+    <text class="entity-field" x="530" y="680">publishedAt</text>
+    <text class="entity-field" x="530" y="695">relatedInitiative_id (FK)</text>
+  </g>
+
+  <!-- Relationships -->
+  <line class="relationship-line" x1="125" y1="160" x2="125" y2="220"/>
+  <text class="relationship-label" x="135" y="190">1:M</text>
+
+  <line class="relationship-line" x1="230" y1="290" x2="280" y2="290"/>
+  <text class="relationship-label" x="240" y="280">M:1</text>
+
+  <line class="relationship-line" x1="370" y1="160" x2="370" y2="220"/>
+  <text class="relationship-label" x="380" y="190">1:M</text>
+
+  <line class="relationship-line" x1="700" y1="130" x2="750" y2="130"/>
+  <text class="relationship-label" x="710" y="120">1:1</text>
+
+  <line class="relationship-line" x1="850" y1="190" x2="1050" y2="220"/>
+  <text class="relationship-label" x="920" y="200">1:M</text>
+
+  <line class="relationship-line" x1="850" y1="190" x2="850" y2="260"/>
+  <text class="relationship-label" x="860" y="225">1:M</text>
+
+  <line class="relationship-line" x1="850" y1="420" x2="850" y2="500"/>
+  <text class="relationship-label" x="860" y="460">1:M</text>
+
+  <line class="relationship-line" x1="1050" y1="410" x2="1050" y2="500"/>
+  <text class="relationship-label" x="1060" y="455">1:M</text>
+
+  <line class="relationship-line" x1="1090" y1="500" x2="1220" y2="500"/>
+  <text class="relationship-label" x="1140" y="490">1:M</text>
+
+  <line class="relationship-line" x1="430" y1="290" x2="520" y2="290"/>
+  <text class="relationship-label" x="460" y="280">1:M</text>
+
+  <line class="relationship-line" x1="370" y1="360" x2="370" y2="430"/>
+  <text class="relationship-label" x="380" y="395">1:1</text>
+
+  <!-- Legend -->
+  <g>
+    <text x="50" y="800" font-size="12" font-weight="bold" fill="#01579B">Legend:</text>
+    <text x="50" y="820" font-size="10" fill="#333">PK = Primary Key | FK = Foreign Key | UK = Unique Key</text>
+    <text x="50" y="835" font-size="10" fill="#333">1:1 = One-to-One | 1:M = One-to-Many | M:M = Many-to-Many</text>
+    <text x="50" y="850" font-size="10" fill="#FF6F00" font-weight="bold">Orange lines = Relationships</text>
+  </g>
+
+  <!-- Modules Info -->
+  <g>
+    <text x="50" y="900" font-size="11" font-weight="bold" fill="#01579B">Modules:</text>
+    <text x="50" y="918" font-size="9" fill="#333">1. Core: Users, Roles, Media, Members, Initiatives, Posts</text>
+    <text x="50" y="933" font-size="9" fill="#333">2. Meetings: Meetings (Weekly meetings with workshop topics)</text>
+    <text x="50" y="948" font-size="9" fill="#333">3. Coder Dojo: Ninjas (Children), Mentors</text>
+    <text x="50" y="963" font-size="9" fill="#333">4. Festival: FestivalEditions, FestivalSections, Locations, Guests, Volunteers, Activities, Schedule</text>
+  </g>
+</svg>

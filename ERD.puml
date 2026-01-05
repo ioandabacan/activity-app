@@ -1,0 +1,201 @@
+@startuml activity-app-erd
+!define ENTITY_COLOR #E1F5FE
+!define RELATIONSHIP_COLOR #FFF9C4
+
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor ENTITY_COLOR
+skinparam classBorderColor #01579B
+
+class Users {
+  id: UUID [PK]
+  email: string [UK]
+  password: string
+  createdAt: timestamp
+}
+
+class Roles {
+  id: UUID [PK]
+  name: string [UK]
+}
+
+class Media {
+  id: UUID [PK]
+  filename: string
+  mimeType: string
+}
+
+class Members {
+  id: UUID [PK]
+  user_id: UUID [FK]
+  status: enum (aspirant|voting)
+  role: enum (regular|founder|honorary)
+  name: string
+  organization: string
+  profileImage_id: UUID [FK]
+  linkedinProfile: string
+}
+
+class Initiatives {
+  id: UUID [PK]
+  title: string
+  description: richText
+  coverImage_id: UUID [FK]
+  externalLink: string
+}
+
+class Ninjas {
+  id: UUID [PK]
+  childName: string
+  age: number
+  additionalInfo: string
+  parentName: string
+  parentEmail: string
+  parentPhone: string
+  safetyConsent: boolean
+  mediaConsent: boolean
+}
+
+class Mentors {
+  id: UUID [PK]
+  name: string
+  biography: richText
+  profilePhoto_id: UUID [FK]
+  linkedUser_id: UUID [FK]
+}
+
+class Meetings {
+  id: UUID [PK]
+  title: string
+  meetingDate: date
+  meetingVenue: string
+  meetingType: enum (workshop|anti_workshop)
+  topicName: enum (demo_stack|learn_failures|business_meet)
+  facilitator_id: UUID [FK]
+  discussionTopics: richText
+}
+
+class Posts {
+  id: UUID [PK]
+  title: string
+  content: richText
+  slug: string [UK]
+  publishedAt: date
+  relatedInitiative_id: UUID [FK]
+}
+
+class FestivalEditions {
+  id: UUID [PK]
+  year: number [UK]
+  title: string
+  mainTheme: string
+  details: richText
+}
+
+class FestivalSections {
+  id: UUID [PK]
+  festivalEdition_id: UUID [FK]
+  sectionName: string
+}
+
+class Locations {
+  id: UUID [PK]
+  festivalEdition_id: UUID [FK]
+  locationName: string
+  locationAddress: string
+  geoCoordinates: point
+  locationDescription: richText
+  layoutMap_id: UUID [FK]
+  maxCapacity: number
+  responsiblePerson_id: UUID [FK]
+}
+
+class Guests {
+  id: UUID [PK]
+  festivalEdition_id: UUID [FK]
+  name: string
+  affiliation: string
+  roles: array(enum)
+  background: richText
+  guestPhoto_id: UUID [FK]
+  onlinePresence: string
+}
+
+class Volunteers {
+  id: UUID [PK]
+  festivalEdition_id: UUID [FK]
+  name: string
+  avatar_id: UUID [FK]
+  company: string
+  dateOfBirth: date
+  contact: string
+  policyDocument_id: UUID [FK]
+  superviser_id: UUID [FK]
+  relatedUser_id: UUID [FK]
+}
+
+class Activities {
+  id: UUID [PK]
+  festivalEdition_id: UUID [FK]
+  title: string
+  details: richText
+  category: enum
+  targetGroups: array(enum)
+  partOfSection_id: UUID [FK]
+}
+
+class Schedule {
+  id: UUID [PK]
+  festivalEdition_id: UUID [FK]
+  beginTime: date
+  finishTime: date
+  scheduledActivity_id: UUID [FK]
+  venue_id: UUID [FK]
+}
+
+class Categories {
+  id: UUID [PK]
+  title: string
+  slug: string
+}
+
+Users ||--o{ Members : "can be"
+Users ||--o{ Mentors : "can mentor"
+Users ||--o{ Volunteers : "can volunteer"
+
+Media ||--o{ Members : "has"
+Media ||--o{ Initiatives : "cover"
+Media ||--o{ Mentors : "avatar"
+Media ||--o{ Locations : "floor plan"
+Media ||--o{ Guests : "photo"
+Media ||--o{ Volunteers : "avatar"
+
+Members ||--o{ Meetings : "presents"
+Members ||--o{ Locations : "coordinates"
+Members ||--o{ Volunteers : "supervises"
+
+Initiatives ||--o{ Posts : "related to"
+
+Ninjas ||--|| Ninjas : "N/A (no FK)"
+
+Mentors ||--|| Mentors : "N/A (no FK)"
+
+Meetings ||--|| Meetings : "N/A (no FK)"
+
+FestivalEditions ||--o{ FestivalSections : "has"
+FestivalEditions ||--o{ Locations : "holds"
+FestivalEditions ||--o{ Guests : "invites"
+FestivalEditions ||--o{ Volunteers : "recruits"
+FestivalEditions ||--o{ Activities : "contains"
+FestivalEditions ||--o{ Schedule : "plans"
+
+FestivalSections ||--o{ Activities : "groups"
+
+Locations ||--o{ Schedule : "hosts"
+
+Guests ||--o{ Activities : "participates"
+
+Activities ||--o{ Schedule : "scheduled"
+
+Posts ||--o{ Categories : "categorized"
+
+@enduml
